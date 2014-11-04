@@ -14,6 +14,7 @@ List of presentations
 =====================
 * [Roslyn - The .Net Compiler Platform](https://github.com/sandermvanvliet/Presentations/tree/master/Roslyn)
 * [What's new in VS2013](https://github.com/sandermvanvliet/Presentations/tree/master/VS2013) 
+* [NoSQL Intro](https://github.com/sandermvanvliet/Presentations/tree/master/NoSQL)
 
 Contact and Feedback
 ====================
