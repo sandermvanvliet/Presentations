@@ -1,0 +1,5 @@
+﻿
+                catch (ExternalSystemException esx) if (esx.ErrorCode == ErrorCode.DeadLock)
+                {
+                    WriteLine("Deadlock detected, retrying...");
+                }

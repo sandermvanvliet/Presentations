@@ -1,0 +1,58 @@
+﻿=== Analyzer ===
+
+			var namedTypeSymbol = (INamedTypeSymbol)symbol;
+
+            if (TypeDerivesFromMessage(namedTypeSymbol) &&
+                TypeNameDoesNotEndWithMessage(namedTypeSymbol))
+            {
+                var diagnostic = Diagnostic.Create(Rule, namedTypeSymbol.Locations[0], namedTypeSymbol.Name);
+
+                addDiagnostic(diagnostic);
+            }
+
+
+        private static bool TypeDerivesFromMessage(INamedTypeSymbol namedTypeSymbol)
+        {
+            return namedTypeSymbol.BaseType.Name.Equals("Message", StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        private static bool TypeNameDoesNotEndWithMessage(INamedTypeSymbol namedTypeSymbol)
+        {
+            return !namedTypeSymbol.Name.EndsWith("Message", StringComparison.InvariantCultureIgnoreCase);
+        }
+
+
+==== CodeFixProvider ===
+			return new [] {
+                CodeAction.Create("Append 'Message'", c => AppendMessageToTypeName(document, declaration, c))
+            };
+
+			
+
+        private async Task<Solution> AppendMessageToTypeName(
+            Document document,
+            TypeDeclarationSyntax typeDecl,
+            CancellationToken cancellationToken)
+        {
+            var identifierToken = typeDecl.Identifier;
+            var newName = identifierToken.Text + "Message";
+
+            // Get the symbol representing the type to be renamed.
+            var semanticModel = await document.GetSemanticModelAsync(cancellationToken);
+            var typeSymbol = semanticModel.GetDeclaredSymbol(typeDecl, cancellationToken);
+
+            // Produce a new solution that has all references to that type renamed, including the declaration.
+            var originalSolution = document.Project.Solution;
+
+            var optionSet = originalSolution.Workspace.Options;
+
+            var newSolution = await Renamer.RenameSymbolAsync(
+                    document.Project.Solution,
+                    typeSymbol,
+                    newName,
+                    optionSet,
+                    cancellationToken)
+                .ConfigureAwait(false);
+
+            return newSolution;
+        }
