@@ -3,9 +3,12 @@ Presentations
 
 Dump for my presentations and samples.
 
-**Please note**
+**Please note**  
 These are presentations that I gave at some point along with samples I've created for the purpose of the presentation and therefore are not meant for any production use.
 Please tread carefully.
+
+The presentations are licensed under Creatitive Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+All code (samples and otherwise) is licensed under the MIT license.
 
 List of presentations
 =====================
