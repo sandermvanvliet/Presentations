@@ -9,8 +9,8 @@ Please tread carefully.
 
 List of presentations
 =====================
-* [Roslyn - The .Net Compiler Platform](https://github.com/sandermvanvliet/Presentations/Roslyn)
-* [What's new in VS2013](https://github.com/sandermvanvliet/Presentations/VS2013) 
+* [Roslyn - The .Net Compiler Platform](https://github.com/sandermvanvliet/Presentations/tree/master/Roslyn)
+* [What's new in VS2013](https://github.com/sandermvanvliet/Presentations/tree/master/VS2013) 
 
 Contact and Feedback
 ====================
