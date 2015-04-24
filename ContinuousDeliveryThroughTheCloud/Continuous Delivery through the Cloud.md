@@ -11,7 +11,7 @@ Wow.
 
 Released at any time? Really?
 
-Well yes, but this is a classical example where theory and practice don't necessarily meet. There are many different interpretations of what releasing actually means. For example it might mean that it can be released to an end-user for immediate use but it could also mean that it's just deployed to production but not used (or usable) yet. However the most common interpretation whould be that the product itself is releasable at any time but the feature that is being worked doesn't have to be accessible yet.
+Well yes, but this is a classical example where theory and practice don't necessarily meet. There are many different interpretations of what releasing actually means. For example it might mean that it can be released to an end-user for immediate use but it could also mean that it's just deployed to production but not used (or usable) yet. However the most common interpretation would be that the product itself is releasable at any time but the feature that is being worked doesn't have to be accessible yet.
 
 Now releasing an application with features that are not complete yet may sound scary and you are right, it is, but that doesn't mean that it's bad. Imagine this: a team is working on feature X and happily coding away. Then in production a wild bug appears which needs a fix and it needs it yesterday. So what happens is that the team drops everything and works on fixing the bug but soon finds itself with the issue that the codebase has already changed! Half of feature X is in but it's not done yet...  
 
@@ -21,7 +21,7 @@ At this point you might find the team discussing all sorts of options:
 * Copy the source code of the production version and build and release that?
 * Use that elaborate branching strategy we created when we started the project?
 
-These options all feel suboptimal and bit risky to pull off. How would you know that a fix you apply in the production hotfix branch is incorporated in the next feature release? If you pick a previous version can you be absolutely sure that no other bugs have been included in the meantime? And even if you have different branches, do you have a build & deployment pipeline for all of them?
+These options all feel suboptimal and bit risky to pull off. How would you know that a fix you apply in the production hot-fix branch is incorporated in the next feature release? If you pick a previous version can you be absolutely sure that no other bugs have been included in the meantime? And even if you have different branches, do you have a build & deployment pipeline for all of them?
 
 To get around this problem the approach to making changes in the first place needs to be changed. Instead of working on a feature and committing when the work is done or that a feature is broken while it's being changed, developers need to ensure that whatever change they make doesn't break the application. Easier said than done, I can assure you.
 
@@ -31,9 +31,9 @@ Now I'd happily discuss all the different tricks you can use to accomplish this 
 
 Apart from making sure that a change to the software doesn't break the working of it is to ensure that the software does what it's supposed to. Because Continuous Delivery implies that you make changes, well, continuously, it would take too much time to manually retest the whole application to make sure that nothing broke.
 
-A big part of implementing Continuous Delivery is to create automated test suites. These provide you with the confidence you need to be able to say: "Yes, this version can be released!". During the lifetime of the application a number of test suites are created. Typically you'll see a number of very small and fast running unit tests that validate small parts of the applications inner workings, integration tests that prove that these small parts collaborate together and larger acceptance tests that prove the business scenarios are implemented correctly.
+A big part of implementing Continuous Delivery is to create automated test suites. These provide you with the confidence you need to be able to say: ***"Yes, this version can be released!"***. During the lifetime of the application a number of test suites are created. Typically you'll see a number of very small and fast running unit tests that validate small parts of the applications inner workings, integration tests that prove that these small parts collaborate together and larger acceptance tests that prove the business scenarios are implemented correctly.
 
-These tests are run at different times in the development process. Unit tests are mostly used by the developers for that necessary quick feedback when they are changing the application. The integration and acceptance tests are typically used during the build process to check that everyting works as expected. These tests also tend to run longer or require more set-up than the unit tests.
+These tests are run at different times in the development process. Unit tests are mostly used by the developers for that necessary quick feedback when they are changing the application. The integration and acceptance tests are typically used during the build process to check that everything works as expected. These tests also tend to run longer or require more set-up than the unit tests.
 
 A typical build pipeline will look similar to this:
 
@@ -42,3 +42,7 @@ A typical build pipeline will look similar to this:
 Every step of this process provides feedback to the team whether or not the software is in a reliable state. Getting feedback early and often is one of the core concepts of Continuous Delivery and you should implement this in your process as early as you can. Tooling like TFS, Jenkins and TeamCity can help accomplishing this.
 
 Once a team is at the stage where there are automated builds and tests there is one more thing that needs to be addressed. Being able to build software is nice but it still needs to be deployed to a production environment before it provides any value to the business. As with the builds and tests having an automated deployment is a must. I think that everyone can agree that manually deploying an application is stressful, tedious, error-prone and just plain boring at the same time. To ensure that you can deploy an application the same time over and over again it pays off to automate this process. There are many ways to do that, it can be a simple batch script or solutions like XL Deploy, Octopus or InRelease. The point is that being able to have a single set of deliverables that you can deploy to any environment gives you the confidence you need to deploy to production without making it an all-hands-on-deck experience.
+
+So a long story short: Continuous Delivery is all about releasing to production whenever you want and with confidence supported by tooling.
+
+# Our story so far
