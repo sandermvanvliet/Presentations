@@ -33,4 +33,10 @@ Apart from making sure that a change to the software doesn't break the working o
 
 A big part of implementing Continuous Delivery is to create automated test suites. These provide you with the confidence you need to be able to say: "Yes, this version can be released!". During the lifetime of the application a number of test suites are created. Typically you'll see a number of very small and fast running unit tests that validate small parts of the applications inner workings, integration tests that prove that these small parts collaborate together and larger acceptance tests that prove the business scenarios are implemented correctly.
 
-These tests are run at different times in the development process. Unit tests are mostly used by the developers for that necessary quick feedback when they are changing the application. The integration and acceptance tests are typically used during the build process to check that everyting works as expected.
+These tests are run at different times in the development process. Unit tests are mostly used by the developers for that necessary quick feedback when they are changing the application. The integration and acceptance tests are typically used during the build process to check that everyting works as expected. These tests also tend to run longer or require more set-up than the unit tests.
+
+A typical build pipeline will look similar to this:
+
+[Write test] -> [Write code] -> [Run unit tests] -> [Check-in] -> [Compile] -> [Run integration tests] -> [Run acceptance tests] -> [Done!]
+
+Every step of this process provides feedback to the team whether or not the software is in a reliable state. Getting feedback early and often is one of the core concepts of Continuous Delivery and you should implement this in your process as early as you can. Tooling like TFS, Jenkins and TeamCity can help accomplishing this.
