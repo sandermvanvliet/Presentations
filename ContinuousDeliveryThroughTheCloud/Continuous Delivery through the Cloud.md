@@ -19,5 +19,12 @@ At this point you might find the team discussing all sorts of options:
 
 * Remove the changes on feature X and copy them back in later after the bug is fixed?
 * Copy the source code of the production version and build and release that?
-* Use an elaborate branching strategy?
+* Use that elaborate branching strategy we created when we started the project?
 
+These options all feel suboptimal and bit risky to pull off. How would you know that a fix you apply in the production hotfix branch is incorporated in the next feature release? If you pick a previous version can you be absolutely sure that no other bugs have been included in the meantime? And even if you have different branches, do you have a build & deployment pipeline for all of them?
+
+To get around this problem the approach to making changes in the first place needs to be changed. Instead of working on a feature and committing when the work is done or that a feature is broken while it's being changed, developers need to ensure that whatever change they make doesn't break the application. Easier said than done, I can assure you.
+
+But if you think about it, it actually might be simpler than it looks. Say that you're working on a new feature that involves a UI you could choose not to put the menu item in place up until the point that it's done. That way the code may be there, but it's still not accessible by the user. Only when you're done and comfortable that it works you can wire up your feature into a menu and make it available to the end user. A common technique for this is called *feature toggling*.
+
+Now I'd happily discuss all the different tricks you can use to accomplish this but then this blog would never be finished so I'll save that for another time. But to wrap this up we can say that there are many options available that allow you to change the software and still be able to release to production.
