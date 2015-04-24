@@ -1,0 +1,17 @@
+{
+  "name": "ContinuousDeliveryThroughTheCloud",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": {
+    "name": "Sander van Vliet",
+    "email": "sauron@barad-dur.nl",
+    "url": "https://barad-dur.nl/"
+  },
+  "description": "Continuous Delivery Through The Cloud",
+  "devDependencies": {
+    "marked": "^0.3.3"
+  },
+  "scripts": {
+    "install": "./build.sh"
+  }
+}
