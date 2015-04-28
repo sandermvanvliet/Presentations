@@ -58,4 +58,8 @@ This process was driven by a single scheduled task on our build server and would
 
 In this process only the TFS build was using a standardized tool, the rest was a mix of PowerShell and batch files. While it might not be the cleanest solution it did work for us and we were in a situation where every night the software was built, deployed and tested automatically. You can imagine that this saves precious time because every morning that we came in we had our test results waiting for us.  
 
-However we had a couple of issues we wanted to fix. For one the build process was hard to understand, also developing it was hardly possible to run on a local machine, you always had to run an actual build which meant checking in your half-ready changes.
+However we had a couple of issues we wanted to fix. For one the build process was hard to understand. Also it was hardly possible to run on a local machine, you always had to run an actual build which meant checking in your half-ready changes which might break the build and so on.
+
+Another problem was that our deployment scripts had to be sophisticated enough to be able to deal with first uninstalling and then deploying again to the desired situation. There are quite a number of odd situations you can get yourself into.
+
+Because the packages for all environments were generated at build time we found that our configuration became hard to manage as the application and configuration were tightly coupled. This means that whenever we wanted to create a new environment we had to make a change to our build process.
