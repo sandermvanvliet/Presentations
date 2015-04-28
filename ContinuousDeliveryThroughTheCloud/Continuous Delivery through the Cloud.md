@@ -46,3 +46,16 @@ Once a team is at the stage where there are automated builds and tests there is 
 So a long story short: Continuous Delivery is all about releasing to production whenever you want and with confidence supported by tooling.
 
 # Our story so far
+When we started building RAM+ a few years ago we wanted to get a build to our to-be-production environment as quick as possible. Our previous experiences with the nightly Toro builds led us in the direction of creating PowerShell scripts to perform the most common tasks from running the build and packaging the application to orchestrating the entire process.
+This process was driven by a single scheduled task on our build server and would execute the following steps:
+
+* Increase the version number for the build
+* Queue a build in TFS and wait for the build to complete
+* Generate the database scripts
+* Package the application for all environments (there were about 7 of them)
+* Deploy the application to our test environment
+* Run the regression tests
+
+In this process only the TFS build was using a standardized tool, the rest was a mix of PowerShell and batch files. While it might not be the cleanest solution it did work for us and we were in a situation where every night the software was built, deployed and tested automatically. You can imagine that this saves precious time because every morning that we came in we had our test results waiting for us.  
+
+However we had a couple of issues we wanted to fix. For one the build process was hard to understand, also developing it was hardly possible to run on a local machine, you always had to run an actual build which meant checking in your half-ready changes.
