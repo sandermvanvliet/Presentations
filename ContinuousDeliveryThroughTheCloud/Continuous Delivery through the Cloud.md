@@ -63,3 +63,12 @@ However we had a couple of issues we wanted to fix. For one the build process wa
 Another problem was that our deployment scripts had to be sophisticated enough to be able to deal with first uninstalling and then deploying again to the desired situation. There are quite a number of odd situations you can get yourself into.
 
 Because the packages for all environments were generated at build time we found that our configuration became hard to manage as the application and configuration were tightly coupled. This means that whenever we wanted to create a new environment we had to make a change to our build process.
+
+# Moving forward
+One of the first steps we took was to separate the configuration from the code as much as we could. It turned out that while we developed RAM+ the settings ended up in various places, some might be in a file while others were in a database and yet others part of a deployment script. Utimately we settled on having as little in the configuration files and to keep most of our settings in the database, which makes them easily maintainable by our support group.
+
+Moving the settings out of the package creates a new challenge: _Where to put the envrionment specific settings?_ Before we started using a deployment tool our scripts had a settings file per environment that contained all the necessary values to be able to deploy to said environment. This file together with the application package was all the deployment engineer needed to push a new version to any environment... ***NICE!*** Or maybe not?
+
+Because of the security separation between the DBA and WinTel engineering groups our beautiful single integrated deployment script had to be broken up. The DBAs haven't got access to the Windows boxes and the WinTel engineer can't deploy the database. Unfortunately at the time we had no way to get around this, at least not in a procedural correct way.
+
+Luckily there were other areas to improve our process.
